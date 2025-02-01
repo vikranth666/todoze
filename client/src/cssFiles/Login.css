@@ -1,0 +1,7 @@
+form{
+    display: flexbox;
+    justify-items: center;
+}
+button{
+    background-color:red;
+}

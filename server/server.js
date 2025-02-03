@@ -8,7 +8,7 @@ const taskRoutes = require("./routes/taskRoutes");
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173", // Frontend URL
+  origin: "https://todoze-client.onrender.com", // Frontend URL
   credentials: true, 
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],

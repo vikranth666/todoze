@@ -7,21 +7,12 @@ const taskRoutes = require("./routes/taskRoutes");
 
 const app = express();
 
-// Define allowed origins (your frontend URL)
-const allowedOrigins = ['https://todoze-client.onrender.com'];
 
-// Use the CORS middleware
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // Allow the request
-    } else {
-      callback(new Error('Not allowed by CORS'), false); // Reject the request
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-  credentials: true, // Allow cookies with CORS
-}));
+  origin: 'https://todoze-client.onrender.com',  // Allow frontend domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+}));;
 
 app.use(express.json());
 

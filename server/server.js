@@ -18,11 +18,15 @@ app.use(cors({
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI, {
+  dbName: "todoze",
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log("MongoDB Connected"))
-.catch((err) => console.error(err));
+  useUnifiedTopology: true
+}).then(() => {
+  console.log(" MongoDB Connected!");
+}).catch((err) => {
+  console.error(" MongoDB Connection Error:", err.message);
+});
+
 
 // Routes
 app.use("/api/auth", authRoutes);

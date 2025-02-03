@@ -5,7 +5,7 @@ import { useNavigate ,Link } from "react-router-dom";
 import axios from "axios";
 
 
-
+const  apiUrl = import.meta.env.VITE_BACKEND_URL
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:4000/api/auth/login",
+      const { data } = await axios.post(`${apiUrl}/api/auth/login`,
      { email, password },
      { withCredentials: true }  //  Important for CORS
       );

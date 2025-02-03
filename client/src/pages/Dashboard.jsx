@@ -9,6 +9,9 @@ import { FaPowerOff } from "react-icons/fa6";
 import Marquee from "react-fast-marquee";
 import { debounce } from "lodash";
 
+
+const  apiUrl = import.meta.env.VITE_BACKEND_URL
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -61,7 +64,7 @@ const Dashboard = () => {
     const fetchTasks = async () => {
       if (!token) return;
       try {
-        const { data } = await axios.get("http://localhost:4000/,api/tasks",{
+        const { data } = await axios.get(`${apiUrl}/api/tasks`,{
           headers: { Authorization: `Bearer ${token}` },
           withCredentials: true,
         });
@@ -77,7 +80,7 @@ const Dashboard = () => {
     if (!token || !newTaskTitle.trim()) return;
     try {
       const newTask = { title: newTaskTitle, createdAt: new Date().toISOString() };
-      const { data } = await axios.post("http://localhost:4000/api/tasks", newTask, {
+      const { data } = await axios.post(`${apiUrl}/api/tasks`, newTask, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
@@ -91,7 +94,7 @@ const Dashboard = () => {
   const handleUpdateTask = async (id) => {
     if (!token || !editTitle.trim()) return;
     try {
-      const { data } = await axios.put(`http://localhost:4000/api/tasks/${id}`, { title: editTitle }, {
+      const { data } = await axios.put(`${apiUrl}/api/tasks${id}`, { title: editTitle }, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
@@ -105,7 +108,7 @@ const Dashboard = () => {
   const handleDeleteTask = async (id) => {
     if (!token) return;
     try {
-      await axios.delete(`http://localhost:4000/api/tasks/${id}`, {
+      await axios.delete(`${apiUrl}/api/tasks${id}`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });

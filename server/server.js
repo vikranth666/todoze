@@ -10,9 +10,10 @@ const app = express();
 
 app.use(cors({
   origin: 'https://todoze-client.onrender.com',  // Allow frontend domain
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-}));;
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true  // Allow credentials (cookies, tokens, etc.)
+}));
 
 app.use(express.json());
 

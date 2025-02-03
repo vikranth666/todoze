@@ -94,7 +94,7 @@ const Dashboard = () => {
   const handleUpdateTask = async (id) => {
     if (!token || !editTitle.trim()) return;
     try {
-      const { data } = await axios.put(`${apiUrl}/api/tasks${id}`, { title: editTitle }, {
+      const { data } = await axios.put(`${apiUrl}/api/tasks/${id}`, { title: editTitle }, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
@@ -108,7 +108,7 @@ const Dashboard = () => {
   const handleDeleteTask = async (id) => {
     if (!token) return;
     try {
-      await axios.delete(`${apiUrl}/api/tasks${id}`, {
+      await axios.delete(`${apiUrl}/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
